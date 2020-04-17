@@ -126,4 +126,88 @@ def game_hash
   }
 end
 
-# Write code here
+def team_names
+  game_hash.map do |home_away, team_attriutes|
+    team_attriutes[:team_name]
+  end
+end
+
+def team_colors(team_name)
+  if team_name == "Brooklyn Nets" 
+    return game_hash[:home][:colors]
+  end
+  game_hash[:away][:colors]
+end
+
+def num_points_scored(athlete)
+  game_hash.each do |home_away, teams_attriutes|
+    teams_attriutes[:players].each do |player|
+      if player[:player_name] == athlete
+        return player[:points]
+      end
+    end
+  end
+end
+
+def player_stats(athlete)
+  game_hash.each do |home_away, team_attriutes|
+    team_attriutes.each do |name_colors_players, value|
+      if name_colors_players == :players
+        value.each do |player|
+          if athlete == player[:player_name]
+            return player
+          end
+        end
+      end
+    end
+  end
+end
+
+def player_numbers(team_name)
+  output = []
+  game_hash.each do |home_away, teams_attriutes|
+    if teams_attriutes[:team_name] == team_name 
+      teams_attriutes.each do |name_colors_players, value|
+        if name_colors_players == :players
+          value.each do |player|
+          output.push(player[:number])
+          end
+        end
+      end
+    end
+  end
+  return output
+end
+
+
+def shoe_size(athlete)
+  game_hash.each do |home_away, team_info|
+    team_info[:players].each do |player|
+      if player[:player_name] == athlete
+        return player[:shoe]
+      end
+    end
+  end
+end
+
+def big_shoe_rebounds
+  big_shoe = -1
+  rebounds = -1
+  game_hash.each do |home_away, teams_attriutes|
+    teams_attriutes[:players].each do |player|
+      if player[:shoe] > big_shoe
+        big_shoe = player[:shoe]
+        rebounds = player[:rebounds]
+      end
+  end
+end
+  return rebounds
+end 
+
+
+
+
+
+
+
+
