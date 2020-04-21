@@ -128,8 +128,8 @@ end
 
 #Return an array of the team names
 def team_names
-  game_hash.map do |home_away, team_attriute|
-    team_attriute[:team_name]
+  game_hash.map do |home_away, team_attribute|
+    team_attribute[:team_name]
   end
 end
 
