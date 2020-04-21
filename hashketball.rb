@@ -176,22 +176,19 @@ def player_stats(athlete)
   end
 end
 
-
-def player_numbers(team_name)
-  output = []
-  game_hash.each do |home_away, teams_attriutes|
-    if teams_attriutes[:team_name] == team_name 
-      teams_attriutes.each do |name_colors_players, value|
-        if name_colors_players == :players
-          value.each do |player|
-          output.push(player[:number])
-          end
-        end
-      end
+#Takes a team name & returns their jersey numbers
+#Can you avoid a nested array being returned?
+def player_numb(team_name)
+  numbers= game_hash.map do |home_away, teams_attribute|
+    if teams_attribute[:team_name] == team_name 
+    teams_attribute[:players].map do |numb|
+    numb[:number]
     end
-  end
-  return output
+   end
+ end
+ numbers.compact[0]
 end
+
 
 
 def big_shoe_rebounds
