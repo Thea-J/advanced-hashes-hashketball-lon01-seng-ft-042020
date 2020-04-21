@@ -154,7 +154,7 @@ def num_points_scored(athlete)
   end
 end
 
-
+#Takes a players' name & returns their shoe-size
 def shoe_size(athlete)
   game_hash.each do |home_away, teams_attribute|
     teams_attribute[:players].each do |player|
