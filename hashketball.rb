@@ -176,6 +176,7 @@ def player_stats(athlete)
   end
 end
 
+
 def player_numbers(team_name)
   output = []
   game_hash.each do |home_away, teams_attriutes|
