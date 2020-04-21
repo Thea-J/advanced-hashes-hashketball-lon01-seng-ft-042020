@@ -179,7 +179,7 @@ end
 #Takes a team name & returns their jersey numbers
 #Can you avoid a nested array being returned??
 def player_numbers(team_name)
-  numbers= game_hash.map do |home_away, teams_attribute|
+  numbers = game_hash.map do |home_away, teams_attribute|
     if teams_attribute[:team_name] == team_name 
     teams_attribute[:players].map do |numb|
     numb[:number]
