@@ -142,10 +142,11 @@ def team_colors(team_name)
   game_hash[game_hash.keys[1]][:colors]
 end
 
-
+#Takes a players' name & returns the number of points they scored
+#|player| is a hash of each member of arrays players
 def num_points_scored(athlete)
-  game_hash.each do |home_away, teams_attriutes|
-    teams_attriutes[:players].each do |player|
+  game_hash.each do |home_away, teams_attribute|
+    teams_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player[:points]
       end
