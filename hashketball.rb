@@ -196,15 +196,6 @@ def player_numbers(team_name)
 end
 
 
-def shoe_size(athlete)
-  game_hash.each do |home_away, team_info|
-    team_info[:players].each do |player|
-      if player[:player_name] == athlete
-        return player[:shoe]
-      end
-    end
-  end
-end
 
 def big_shoe_rebounds
   big_shoe = -1
