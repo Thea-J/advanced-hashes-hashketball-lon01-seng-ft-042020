@@ -190,7 +190,7 @@ def player_numbers(team_name)
 end
 
 
-#
+#Return the number of rebounds of the player that has the largest shoe size
 def big_shoe_rebounds
   big_shoe = -1
   rebounds = -1
