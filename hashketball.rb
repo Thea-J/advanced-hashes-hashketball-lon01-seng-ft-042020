@@ -134,10 +134,14 @@ def team_names
 end
 
 def team_colors(team_name)
-  if team_name == "Brooklyn Nets" 
-    return game_hash[:home][:colors]
+  game_hash.keys.each{|home_away|
+  team_names.each{|team|
+  if team_name == team 
+   return game_hash[home_away][:colors]
+  else
+  game_hash[home_away][:colors]
   end
-  game_hash[:away][:colors]
+}}
 end
 
 def num_points_scored(athlete)
