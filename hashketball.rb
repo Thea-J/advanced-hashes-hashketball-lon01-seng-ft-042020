@@ -167,13 +167,9 @@ end
 
 def player_stats(athlete)
   game_hash.each do |home_away, team_attriutes|
-    team_attriutes.each do |name_colors_players, value|
-      if name_colors_players == :players
-        value.each do |player|
-          if athlete == player[:player_name]
-            return player
-          end
-        end
+    team_attriutes[:players].each do |player|
+      if player[:player_name] == athlete
+        return player
       end
     end
   end
