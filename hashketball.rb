@@ -126,22 +126,27 @@ def game_hash
   }
 end
 
+#Return an array of the team names
 def team_names
-  game_hash.map do |home_away, team_attriutes|
-    team_attriutes[:team_name]
+  game_hash.map do |home_away, team_attribute|
+    team_attribute[:team_name]
   end
 end
 
+#Take the team_name & Return an array of the team_colors
+#Find a way to make this dynamic??
 def team_colors(team_name)
-  if team_name == "Brooklyn Nets" 
-    return game_hash[:home][:colors]
+ if team_name == team_names[0]  #"Brooklyn Nets"
+  return game_hash[game_hash.keys[0]][:colors]
   end
-  game_hash[:away][:colors]
+  game_hash[game_hash.keys[1]][:colors]
 end
 
+#Takes a players' name & returns the number of points they scored
+#|player| is a hash of each member of arrays players
 def num_points_scored(athlete)
-  game_hash.each do |home_away, teams_attriutes|
-    teams_attriutes[:players].each do |player|
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player[:points]
       end
@@ -149,40 +154,10 @@ def num_points_scored(athlete)
   end
 end
 
-def player_stats(athlete)
-  game_hash.each do |home_away, team_attriutes|
-    team_attriutes.each do |name_colors_players, value|
-      if name_colors_players == :players
-        value.each do |player|
-          if athlete == player[:player_name]
-            return player
-          end
-        end
-      end
-    end
-  end
-end
-
-def player_numbers(team_name)
-  output = []
-  game_hash.each do |home_away, teams_attriutes|
-    if teams_attriutes[:team_name] == team_name 
-      teams_attriutes.each do |name_colors_players, value|
-        if name_colors_players == :players
-          value.each do |player|
-          output.push(player[:number])
-          end
-        end
-      end
-    end
-  end
-  return output
-end
-
-
+#Takes a players' name & returns their shoe-size
 def shoe_size(athlete)
-  game_hash.each do |home_away, team_info|
-    team_info[:players].each do |player|
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player[:shoe]
       end
@@ -190,6 +165,32 @@ def shoe_size(athlete)
   end
 end
 
+#Takes a players' name & returns their status
+def player_stats(athlete)
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
+      if player[:player_name] == athlete
+        return player
+      end
+    end
+  end
+end
+
+#Takes a team name & returns their jersey numbers
+#Can you avoid a nested array being returned??
+def player_numbers(team_name)
+  numbers = game_hash.map do |home_away, team_attribute|
+    if team_attribute[:team_name] == team_name 
+    team_attribute[:players].map do |numb|
+    numb[:number]
+    end
+   end
+ end
+ numbers.compact[0]
+end
+
+
+#Return the number of rebounds of the player that has the largest shoe size
 def big_shoe_rebounds
   big_shoe = -1
   rebounds = -1
