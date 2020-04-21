@@ -145,8 +145,8 @@ end
 #Takes a players' name & returns the number of points they scored
 #|player| is a hash of each member of arrays players
 def num_points_scored(athlete)
-  game_hash.each do |home_away, teams_attribute|
-    teams_attribute[:players].each do |player|
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player[:points]
       end
@@ -156,8 +156,8 @@ end
 
 #Takes a players' name & returns their shoe-size
 def shoe_size(athlete)
-  game_hash.each do |home_away, teams_attribute|
-    teams_attribute[:players].each do |player|
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player[:shoe]
       end
@@ -167,8 +167,8 @@ end
 
 #Takes a players' name & returns their status
 def player_stats(athlete)
-  game_hash.each do |home_away, teams_attribute|
-    teams_attribute[:players].each do |player|
+  game_hash.each do |home_away, team_attribute|
+    team_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player
       end
