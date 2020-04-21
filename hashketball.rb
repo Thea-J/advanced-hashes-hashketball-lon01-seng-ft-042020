@@ -168,7 +168,7 @@ end
 #Takes a players' name & returns their status
 def player_stats(athlete)
   game_hash.each do |home_away, teams_attribute|
-    team_attriutes[:players].each do |player|
+    teams_attribute[:players].each do |player|
       if player[:player_name] == athlete
         return player
       end
