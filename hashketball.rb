@@ -133,6 +133,7 @@ def team_names
   end
 end
 
+
 def team_colors(team_name)
  if team_name == team_names[0] 
   return game_hash[game_hash.keys[0]][:colors]
