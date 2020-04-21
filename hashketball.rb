@@ -133,7 +133,8 @@ def team_names
   end
 end
 
-
+#Take the team_name & Return an array of the team_colors
+#Find a way to make this dynamic??
 def team_colors(team_name)
  if team_name == team_names[0] 
   return game_hash[game_hash.keys[0]][:colors]
