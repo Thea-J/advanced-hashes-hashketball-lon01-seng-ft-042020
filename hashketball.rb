@@ -165,6 +165,7 @@ def shoe_size(athlete)
   end
 end
 
+#Takes a players' name & returns their status
 def player_stats(athlete)
   game_hash.each do |home_away, team_attriutes|
     team_attriutes[:players].each do |player|
