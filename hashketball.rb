@@ -142,6 +142,7 @@ def team_colors(team_name)
   game_hash[game_hash.keys[1]][:colors]
 end
 
+
 def num_points_scored(athlete)
   game_hash.each do |home_away, teams_attriutes|
     teams_attriutes[:players].each do |player|
