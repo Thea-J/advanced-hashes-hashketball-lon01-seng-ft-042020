@@ -133,15 +133,11 @@ def team_names
   end
 end
 
-def team_colors(team_name)
-  game_hash.keys.each{|home_away|
-  team_names.each{|team|
-  if team_name == team 
-   return game_hash[home_away][:colors]
-  else
-  game_hash[home_away][:colors]
+def colors(team_name)
+ if team_name == team_names[0] 
+  return game_hash[game_hash.keys[0]][:colors]
   end
-}}
+  game_hash[game_hash.keys[1]][:colors]
 end
 
 def num_points_scored(athlete)
